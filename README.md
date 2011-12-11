@@ -1,4 +1,4 @@
-This is the Facebook plugin for [SiriProxy](https://github.com/shabbirv/SiriProxy-Facebookstatus). Please follow the instructions in the config-info.yml file.
+This is the Facebook plugin for [SiriProxy](https://github.com/plamoni/SiriProxy). Please follow the instructions in the config-info.yml file.
 
 
 # Setup
