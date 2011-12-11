@@ -21,7 +21,7 @@ https://graph.facebook.com/oauth/authorize?type=user_agent&client_id=32424644760
 ^^ Once you click the link you will be prompted to login and allow for publishing permissions. Once you have accepted that you will be redirected to http://shabz.co/access_token.html
 
 The link will look something like this: 
-http://shabz.co/access_token.html#access_token=<YOU WILL COPY WHAT YOU SEE HERE>&expires_in=5959&code=<THIS PART IS IRRELEVANT>
+http://shabz.co/access_token.html#access_token=*YOU WILL COPY WHAT YOU SEE HERE*&expires_in=5959&code=*THIS PART IS IRRELEVANT*
 
 Your username is what you see at the end of your Facebook link, for instance mine is http://facebook.com/shabbirv
 
