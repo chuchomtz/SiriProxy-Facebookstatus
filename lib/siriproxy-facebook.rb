@@ -27,7 +27,8 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
           userjson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=#{self.uid}&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
           user = JSON.parse(userjson) rescue nil
 
-            say ['quotes']
+            say "Here is your quote"
+            say "#{user['quotes']}"
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
