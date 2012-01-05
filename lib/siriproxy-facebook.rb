@@ -24,11 +24,11 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   end
 
   listen_for /what's my favorite quote/i do
-          userjson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=#{self.uid}&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
-          user = JSON.parse(userjson) rescue nil
+          quotejson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=#{self.uid}&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
+          quote = JSON.parse(quotejson) rescue nil
 
             say "Here is your quote"
-            say "#{['quotes']}"
+            say "#{quote['quotes']}"
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
