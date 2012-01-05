@@ -28,7 +28,10 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
           quote = JSON.parse(quotejson) rescue nil
 
             say "Here is your quote"
-            say "#{quote['quotes']}"
+ #           say "You have #{count} new notification."
+ #             quote['notifications'].each do |item|
+                say item['quotes']
+  #            end
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
