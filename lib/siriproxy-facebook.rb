@@ -29,7 +29,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
 
             say "Here is your quote"
          #   say "#{quote['uid']}"
-            say "You have #{count} new notification."
+        #    say "You have #{count} new notification."
               quote['userquotes'].each do |item|
                 say item['quotes']              
               end
