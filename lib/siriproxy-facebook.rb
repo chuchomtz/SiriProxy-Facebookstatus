@@ -36,7 +36,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
        #     object.views << SiriAnswerSnippet.new([answer])
        #     send_object object
 
-            say "", spoken "#{quote['quotes']}"             
+            spoken "#{quote['quotes']}"             
               
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
