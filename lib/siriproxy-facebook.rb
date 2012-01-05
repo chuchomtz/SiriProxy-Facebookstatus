@@ -9,6 +9,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   
   def initialize(config)  
     self.access_token = config["access_token"] 
+    self.uid = config["uid"]
     self.username = config["username"]  
   end
 
@@ -22,7 +23,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   end
 
   listen_for /what's my favorite quote/i do
-          userjson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=643352342&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
+          userjson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=#{self.uid}&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
           user = JSON.parse(userjson) rescue nil
 
             say ['quotes']
