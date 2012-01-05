@@ -28,14 +28,19 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
           quoteText = "#{quote['quotes']}" rescue nil
 
             say "Here is your quote"
-            object = SiriAddViews.new
-            object.make_root(last_ref_id)
-            answer = SiriAnswer.new("Favorite Quote", [
-                                SiriAnswerLine.new('logo','http://cl.ly/CXNm/Screen%20Shot%202011-12-11%20at%2011.26.52%20AM.png'), # facebook logo
-                                SiriAnswerLine.new(quoteText)
-                                ])
-       #     object.views << SiriAnswerSnippet.new([answer])
-       #     send_object object
+            show_rich_response do
+                image "http://cl.ly/CXNm/Screen%20Shot%202011-12-11%20at%2011.26.52%20AM.png"
+                text "Favorite Quote:"
+                text "#{quote['quotes']}"
+            end
+            #object = SiriAddViews.new
+            #object.make_root(last_ref_id)
+            #answer = SiriAnswer.new("Favorite Quote", [
+            #                    SiriAnswerLine.new('logo','http://cl.ly/CXNm/Screen%20Shot%202011-12-11%20at%2011.26.52%20AM.png'), # facebook logo
+            #                    SiriAnswerLine.new(quoteText)
+            #                    ])
+            #object.views << SiriAnswerSnippet.new([answer])
+            #send_object object
 
             #say "Reading quote...", 
             say "", spoken: "#{quote['quotes']}"             
