@@ -6,11 +6,9 @@ require 'json'
 class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   attr_accessor :access_token
   attr_accessor :username
-  attr_accessor :uid
   
   def initialize(config)  
     self.access_token = config["access_token"] 
-    self.uid = config["uid"]
     self.username = config["username"]  
   end
 
@@ -24,15 +22,12 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   end
 
   listen_for /what's my favorite quote/i do
-          quotejson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=#{self.uid}&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
-          quote = "\{\"userquotes\":\n" & JSON.parse(quotejson) & "\}" rescue nil
+          quotejson = HTTParty.get("https://graph.facebook.com/#{self.username}?fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
+          quote = JSON.parse(quotejson) rescue nil
 
             say "Here is your quote"
-         #   say "#{quote['uid']}"
-        #    say "You have #{count} new notification."
-              quote['userquotes'].each do |item|
-                say item['quotes']              
-              end
+            say "#{quote['quotes']}"             
+              
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
