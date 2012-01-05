@@ -8,4 +8,3 @@
       git: 'git://github.com/shabbirv/SiriProxy-Facebookstatus.git'
       access_token: 'YOUR_ACCESS_TOKEN' 
       username: 'YOUR_FACEBOOK_USERNAME'
-      uid: 'YOUR_FACEBOOK_UID'
