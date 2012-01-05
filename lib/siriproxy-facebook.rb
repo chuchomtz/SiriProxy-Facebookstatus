@@ -24,9 +24,19 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   listen_for /what's my favorite quote/i do
           quotejson = HTTParty.get("https://graph.facebook.com/#{self.username}?fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
           quote = JSON.parse(quotejson) rescue nil
+          quoteText = "#{quote['quotes']}" rescue nil
 
             say "Here is your quote"
-            say "#{quote['quotes']}"             
+            object = SiriAddViews.new
+            object.make_root(last_ref_id)
+            answer = SiriAnswer.new("Favorite Quote", [
+                                SiriAnswerLine.new('logo','http://cl.ly/CXNm/Screen%20Shot%202011-12-11%20at%2011.26.52%20AM.png'), # facebook logo
+                                SiriAnswerLine.new(quoteText)
+                                ])
+       #     object.views << SiriAnswerSnippet.new([answer])
+       #     send_object object
+
+            say "", spoken "#{quote['quotes']}"             
               
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
