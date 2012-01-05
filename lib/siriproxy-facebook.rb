@@ -30,7 +30,8 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
             say "Here is your quote"
  #           say "You have #{count} new notification."
  #             quote['notifications'].each do |item|
-                say quote['quotes']
+                say "#{quote['quotes']}"
+                
   #            end
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
