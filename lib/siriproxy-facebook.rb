@@ -22,10 +22,10 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   end
 
   listen_for /what's my favorite quote/i do
-          userjson = HTTParty.get("https://graph.facebook.com/#{self.username}").body rescue nil
+          userjson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=643352342&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
           user = JSON.parse(userjson) rescue nil
 
-            say "#{user['quotes']}"
+            say ['quotes']
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
@@ -33,6 +33,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   listen_for /check facebook/i do
     
           page = HTTParty.get("https://api.facebook.com/method/notifications.getList?access_token=#{self.access_token}&format=json").body rescue nil
+          
           notifications = JSON.parse(page) rescue nil
           count = 0
           
