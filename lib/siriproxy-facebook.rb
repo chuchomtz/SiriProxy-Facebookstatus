@@ -21,7 +21,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
 
-  listen_for /what's my favourite quote/i do
+  listen_for /what's my favorite quote/i do
           userjson = HTTParty.get("https://graph.facebook.com/#{self.username}").body rescue nil
           user = JSON.parse(userjson) rescue nil
 
