@@ -16,7 +16,8 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
           userjson = HTTParty.get("https://graph.facebook.com/#{self.username}").body rescue nil
           user = JSON.parse(userjson) rescue nil
 
-            say "If your name is #{user['name']} then Facebook is set up correctly!"
+            say "User name: #{user['name']}", spoken: "If your name is #{user['name']} then Facebook is set up correctly!"
+            say ""
 
           request_completed #always complete your request! Otherwise the phone will "spin" at the user!
   end
@@ -37,7 +38,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
        #     send_object object
 
             #say "Reading quote...", 
-            spoken: "#{quote['quotes']}"             
+            say "", spoken: "#{quote['quotes']}"             
    # say "Sometimes I don't write what I say", spoken: "Sometimes I don't say what I write"
               
 
