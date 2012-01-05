@@ -25,9 +25,10 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
 
   listen_for /what's my favorite quote/i do
           quotejson = HTTParty.get("https://api.facebook.com/method/users.getInfo?uids=#{self.uid}&fields=quotes&access_token=#{self.access_token}&format=json").body rescue nil
-          quote = "{"userquotes": " & JSON.parse(quotejson) & "}" rescue nil
+          quote = "\{\"userquotes\":\n" & JSON.parse(quotejson) & "\}" rescue nil
 
             say "Here is your quote"
+            say "#{quote['uid']}"
             say "You have #{count} new notification."
               quote['userquotes'].each do |item|
                 say item['quotes']              
