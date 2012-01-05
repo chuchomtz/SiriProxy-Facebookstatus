@@ -28,11 +28,7 @@ class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
           quoteText = "#{quote['quotes']}" rescue nil
 
             say "Here is your quote"
-            #show_rich_response do
-            #    image "http://cl.ly/CXNm/Screen%20Shot%202011-12-11%20at%2011.26.52%20AM.png"
-            #    text "Favorite Quote:"
-            #    text "#{quote['quotes']}"
-            #end
+
             object = SiriAddViews.new
             object.make_root(last_ref_id)
             answer = SiriAnswer.new("Favorite Quote", [
