@@ -6,6 +6,7 @@ require 'json'
 class SiriProxy::Plugin::Facebook < SiriProxy::Plugin
   attr_accessor :access_token
   attr_accessor :username
+  attr_accessor :uid
   
   def initialize(config)  
     self.access_token = config["access_token"] 
